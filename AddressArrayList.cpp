@@ -24,4 +24,6 @@ ArrayList<Address>::extractAllMatches(const Address& itemToMatch)
       newList.push(get(i));
     }
   }
+
+  return newList;
 }
