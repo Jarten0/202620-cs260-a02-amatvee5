@@ -29,6 +29,12 @@ public:
   void clear();
 
   void printRange(int start, int end, AddressLLNode* = nullptr);
+
+  void combine(AddressLinkedList other);
+
+  int count();
+
+  AddressLinkedList extractAllMatches(const Address& itemToMatch);
 };
 
 #endif

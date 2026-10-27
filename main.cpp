@@ -141,4 +141,22 @@ int main()
 
   linkListA.printRange(2, 5);
   linkListB.printRange(2, 5);
+
+  cout << " -------------------- Part 4 -------------------- " << endl;
+
+  AddressLinkedList linkListC(linkListA);
+  AddressLinkedList linkListD(linkListB);
+
+  linkListC.combine(linkListD);
+
+  linkListC.printRange(size / 2 - 2, size / 2 + 1);
+
+  cout << " -------------------- Part 5 -------------------- " << endl;
+
+  AddressLinkedList linkListE =
+      linkListC.extractAllMatches(Address{.state = "OR"});
+
+  cout << "Lengths: " << linkListC.count() << ", " << linkListE.count() << endl;
+
+  linkListE.printRange(0, 2);
 }

@@ -100,3 +100,43 @@ void AddressLinkedList::printRange(int start, int end, AddressLLNode* current)
 
   printRange(start - 1, end - 1, current->next);
 }
+
+void AddressLinkedList::combine(AddressLinkedList other)
+{
+  tail->next = other.head;
+  tail = other.tail;
+  other.head = nullptr;
+  other.tail = nullptr;
+}
+
+AddressLinkedList
+AddressLinkedList::extractAllMatches(const Address& itemToMatch)
+{
+  AddressLinkedList newList;
+
+  AddressLLNode* current = head;
+
+  while (current != nullptr) {
+    if (current->data.state == itemToMatch.state) {
+      newList.insertEnd(current->data);
+    }
+
+    current = current->next;
+  }
+
+  return newList;
+}
+
+int AddressLinkedList::count()
+{
+  int count = 0;
+
+  AddressLLNode* current = head;
+
+  while (current != nullptr) {
+    current = current->next;
+    count++;
+  }
+
+  return count;
+}
