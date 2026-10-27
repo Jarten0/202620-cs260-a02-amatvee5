@@ -11,7 +11,7 @@ struct Address {
   string city;
   string county;
   string state;
-  int zip;
+  int zipCode;
 };
 
 #endif

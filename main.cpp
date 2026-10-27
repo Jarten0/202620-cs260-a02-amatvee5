@@ -1,6 +1,7 @@
 #include <ctime>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -11,8 +12,14 @@ using namespace std;
 
 string to_string(const Address& address)
 {
-  return address.address + " (City: " + address.city
-         + ", State: " + address.state + ")";
+  stringstream result;
+  result << address.first << " " << address.last << endl;
+  result << "\t" << address.city << ", " << address.state << " "
+         << address.zipCode << endl;
+  return result.str();
+
+  // return address.address + " (City: " + address.city
+  // + ", State: " + address.state + ")";
 }
 
 ArrayList<Address> read_entries_from_file(string filePath, int maxEntries)
@@ -48,7 +55,7 @@ ArrayList<Address> read_entries_from_file(string filePath, int maxEntries)
         .city = items[3],
         .county = items[4],
         .state = items[5],
-        .zip = std::stoi(items[6]),
+        .zipCode = std::stoi(items[6]),
     });
   }
 
@@ -81,4 +88,9 @@ int main()
 
   cout << "Item count of initial list: " << aListA.length() << endl;
   cout << "Item count of resulting list: " << aListC.length() << endl;
+
+  cout << to_string(aListC.get(0)) << endl;
+  cout << to_string(aListC.get(1)) << endl;
+
+  cout << " -------------------- Part 3 -------------------- " << endl;
 }
