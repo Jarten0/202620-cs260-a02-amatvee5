@@ -27,6 +27,8 @@ public:
   void insertEnd(Address value);
 
   void clear();
+
+  void printRange(int start, int end, AddressLLNode* = nullptr);
 };
 
 #endif

@@ -14,4 +14,6 @@ struct Address {
   int zipCode;
 };
 
+string to_string(const Address& address);
+
 #endif

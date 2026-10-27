@@ -1,6 +1,10 @@
 #include "AddressLinkedList.h"
 #include "Address.h"
 
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
 AddressLinkedList::AddressLinkedList()
 {
   head = nullptr;
@@ -73,4 +77,26 @@ void AddressLinkedList::clear()
 
   head = nullptr;
   tail = nullptr;
+}
+
+// start is inclusive, end is exclusive
+void AddressLinkedList::printRange(int start, int end, AddressLLNode* current)
+{
+  if (start >= end || end <= 0) {
+    return;
+  }
+
+  if (current == nullptr) {
+    current = head;
+  }
+
+  if (start <= 0) {
+    cout << to_string(current->data);
+  }
+
+  if (current->next == nullptr) {
+    throw std::logic_error("printRange indexed out of bounds");
+  }
+
+  printRange(start - 1, end - 1, current->next);
 }
