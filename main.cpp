@@ -159,4 +159,10 @@ int main()
   cout << "Lengths: " << linkListC.count() << ", " << linkListE.count() << endl;
 
   linkListE.printRange(0, 2);
+
+  cout << " -------------------- Part 6 -------------------- " << endl;
+
+  linkListA.interleave(linkListB);
+
+  linkListA.printRange(0, 5);
 }

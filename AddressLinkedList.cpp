@@ -140,3 +140,35 @@ int AddressLinkedList::count()
 
   return count;
 }
+
+// ooo i really liked writing this one
+void AddressLinkedList::interleave(AddressLinkedList& other)
+{
+  if (head == nullptr) {
+    head = other.head;
+    tail = other.tail;
+    other.head = nullptr;
+    other.tail = nullptr;
+    return;
+  }
+
+  AddressLLNode* iter1 = head;
+  AddressLLNode* iter2 = other.head;
+  AddressLLNode* tmp = nullptr;
+
+  while (iter2 != nullptr) {
+    tmp = iter1->next;
+    iter1->next = iter2;
+    iter2 = tmp;
+    iter1 = iter1->next;
+  }
+
+  while (iter1->next != nullptr) {
+    iter1 = iter1->next;
+  }
+
+  tail = iter1;
+
+  other.head = nullptr;
+  other.tail = nullptr;
+}

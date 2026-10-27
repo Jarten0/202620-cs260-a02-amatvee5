@@ -35,6 +35,15 @@ public:
   int count();
 
   AddressLinkedList extractAllMatches(const Address& itemToMatch);
+
+  /**
+   * @brief interleaves the other list into this one
+   * @return other List to combine - should end up emptied
+   *
+   * Assuming this list looks like {a, b, c, d} and other is {w, x, y, z}
+   *  this list should end as {a, w, b, x, c, y, d, z} and other as {}
+   */
+  void interleave(AddressLinkedList& other);
 };
 
 #endif
