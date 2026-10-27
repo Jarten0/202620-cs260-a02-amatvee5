@@ -9,6 +9,12 @@ using namespace std;
 #include "AddressLinkedList.h"
 #include "ArrayList.h"
 
+string to_string(const Address& address)
+{
+  return address.address + " (City: " + address.city
+         + ", State: " + address.state + ")";
+}
+
 ArrayList<Address> read_entries_from_file(string filePath, int maxEntries)
 {
   std::ifstream infile;
@@ -54,13 +60,25 @@ int main()
   int size = 25000;
   cin >> size;
 
-  ArrayList<Address> entries =
+  cout << " -------------------- Part 1 -------------------- " << endl;
+
+  ArrayList<Address> aListA =
       read_entries_from_file("25000AddressesA.txt", size);
 
-  ArrayList<Address> entries2 =
+  ArrayList<Address> aListB =
       read_entries_from_file("25000AddressesB.txt", size);
 
-  entries.combine(entries2);
+  aListA.combine(aListB);
 
-  cout << "Items in combined list: " << entries.length() << endl;
+  cout << "Item count of combined list: " << aListA.length() << endl;
+
+  cout << to_string(aListA.get(aListA.length() / 2 - 2)) << endl;
+  cout << to_string(aListA.get(aListA.length() / 2 + 1)) << endl;
+
+  cout << " -------------------- Part 2 -------------------- " << endl;
+
+  ArrayList<Address> aListC = aListA.extractAllMatches(Address{.state = "OR"});
+
+  cout << "Item count of initial list: " << aListA.length() << endl;
+  cout << "Item count of resulting list: " << aListC.length() << endl;
 }

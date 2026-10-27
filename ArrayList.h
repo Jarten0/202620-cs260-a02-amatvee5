@@ -30,6 +30,8 @@ public:
   void push(T value);
 
   void combine(ArrayList<T> other);
+
+  ArrayList<T> extractAllMatches(const T& itemToMatch);
 };
 
 template<typename T>
