@@ -1,3 +1,5 @@
+#ifndef ADDRESS_H
+#define ADDRESS_H
 
 #include <string>
 using namespace std;
@@ -11,3 +13,5 @@ struct Address {
   string state;
   int zip;
 };
+
+#endif

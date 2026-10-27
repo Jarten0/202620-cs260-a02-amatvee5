@@ -14,7 +14,7 @@ ArrayList<Address> read_entries_from_file(string filePath, int maxEntries)
   std::ifstream infile;
   infile.open(filePath);
 
-  ArrayList<Address> entries(25000);
+  ArrayList<Address> entries(maxEntries);
 
   for (int i = 0; i < maxEntries; i++) {
     string line;
@@ -59,4 +59,8 @@ int main()
 
   ArrayList<Address> entries2 =
       read_entries_from_file("25000AddressesB.txt", size);
+
+  entries.combine(entries2);
+
+  cout << "Items in combined list: " << entries.length() << endl;
 }
